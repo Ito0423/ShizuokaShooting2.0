@@ -2,30 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewPlayerSpaceShip
+public class NewPlayerSpaceShip : NewSpaceShip
 {
-    /*//TODO　変更テスト
-
+    //インスタンス化
+    NewBullet newBullet;
+    //インスタンス化
+    PlayerShot playerShot;
     //金を回収した時の音
     public AudioClip m_pickManeySound;
-
     //金を回収するスピード
     [SerializeField] float m_pickManeySpeed;
-
+    //弾丸の発射間隔
+    [SerializeField] public float m_bulletDelay = 0.5f;
     IEnumerator Start()
     {
         GetConponent();
-
+        //インスタンス化
+        playerShot = GetComponent<PlayerShot>();
+        newBullet = GetComponent<NewBullet>();
         while (true)
         {
             // 弾をプレイヤーと同じ位置/角度で作成
-            spaceship.Shot(transform);
-            audioSource.PlayOneShot(playerBulletSe);
-            // shotDelay秒待つ
-            shotDelay = spaceship.m_shotDelay;
-            yield return new WaitForSeconds(shotDelay);
+            playerShot.playerShotBullet(transform);
+            yield return new WaitForSeconds(m_bulletDelay);
         }
-
     }
 
     void Update()
@@ -135,16 +135,6 @@ public class NewPlayerSpaceShip
     {
         Instantiate(m_ExplosionPrefub, transform.position, transform.rotation);
     }
-
-    public void PlayerShot(Transform origin)
-    {
-        var pos = origin.position;
-
-        var rot = origin.rotation;
-
-        var shot = Instantiate(m_bullet[0], pos, rot);
-        shot.SetBulletSpeed(m_bulletSpeed);
-    }*/
 }
 
 

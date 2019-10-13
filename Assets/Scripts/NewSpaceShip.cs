@@ -12,14 +12,8 @@ public class NewSpaceShip : MonoBehaviour
     //機体が打つ弾のスピード
     public float m_shotBulletSpeed = 0.1f;
 
-    //機体が弾を打つ間隔
-    public float m_shotDelay = 0.5f;
-
     //弾を打つかどうか
     public bool m_CanShot = true;
-
-    //弾のPrefab
-    public Bullet[] m_BulletPrefub;
 
     //爆発のprefab
     public GameObject m_ExplosionPrefub;
@@ -55,3 +49,4 @@ public class NewSpaceShip : MonoBehaviour
         m_rigidbody2d = GetComponent<Rigidbody2D>();
     }
 }
+
