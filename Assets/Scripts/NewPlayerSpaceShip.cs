@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewPlayerSpaceShip : NewSpaceShip
+public class NewPlayerSpaceShip
 {
-    //TODO　変更テスト
+    /*//TODO　変更テスト
 
     //金を回収した時の音
     public AudioClip m_pickManeySound;
@@ -144,6 +144,7 @@ public class NewPlayerSpaceShip : NewSpaceShip
 
         var shot = Instantiate(m_bullet[0], pos, rot);
         shot.SetBulletSpeed(m_bulletSpeed);
-    }
-
+    }*/
 }
+
+
