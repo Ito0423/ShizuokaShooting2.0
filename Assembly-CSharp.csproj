@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Field\StageText.cs" />
     <Compile Include="Assets\Scripts\Field\Title.cs" />
     <Compile Include="Assets\Scripts\NewPlayerSpaceShip.cs" />
+    <Compile Include="Assets\Scripts\NewSpaceShip.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHp.cs" />
     <Compile Include="Assets\Scripts\Public\Blink.cs" />
