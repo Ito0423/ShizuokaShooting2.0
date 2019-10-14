@@ -4,26 +4,30 @@ using UnityEngine;
 
 public class NewPlayerSpaceShip : NewSpaceShip
 {
-    //インスタンス化
     NewBullet newBullet;
-    //インスタンス化
+
     PlayerShot playerShot;
+
     //金を回収した時の音
     public AudioClip m_pickManeySound;
+
     //金を回収するスピード
     [SerializeField] float m_pickManeySpeed;
+
     //弾丸の発射間隔
     [SerializeField] public float m_bulletDelay = 0.5f;
+
     IEnumerator Start()
     {
         GetConponent();
-        //インスタンス化
+        //コンポーネントの情報を取得
         playerShot = GetComponent<PlayerShot>();
         newBullet = GetComponent<NewBullet>();
         while (true)
         {
             // 弾をプレイヤーと同じ位置/角度で作成
             playerShot.playerShotBullet(transform);
+            //弾を打つ間隔をつくる
             yield return new WaitForSeconds(m_bulletDelay);
         }
     }
@@ -37,6 +41,72 @@ public class NewPlayerSpaceShip : NewSpaceShip
     }
 
     void OnTriggerEnter2D(Collider2D c)
+    {
+        //プレイヤーがほかのオブジェクトに当たった際の挙動
+        PlayerHitObject(c);
+    }
+
+    private void PlayerSpaceShipMove()
+    {
+        // 右・左
+        float x = Input.GetAxisRaw("Horizontal");
+
+        // 上・下
+        float y = Input.GetAxisRaw("Vertical");
+
+        // 移動する向きを求める
+        Vector2 direction = new Vector2(x, y).normalized;
+
+        // 移動する向きとスピードを代入する
+        m_rigidbody2d.velocity = direction * m_moveSpeed;
+
+        //プレイヤーの移動を制限
+        playerClamp();
+    }
+
+    //プレイヤーの動きを制限するメソッド
+    private void playerClamp()
+    {
+        // 画面左下のワールド座標をビューポートから取得
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+
+        // 画面右上のワールド座標をビューポートから取得
+        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+        // プレイヤーの座標を取得
+        Vector2 pos = transform.position;
+
+        // プレイヤーの位置が画面内に収まるように制限をかける
+        pos.x = Mathf.Clamp(pos.x, min.x, max.x);
+        pos.y = Mathf.Clamp(pos.y, min.y, max.y);
+
+        // 制限をかけた値をプレイヤーの位置とする
+        transform.position = pos;
+    }
+
+    //プレイヤーが金を回収するメソッド
+    private void getManey()
+    {
+        //回収するスピード
+        float step = m_pickManeySpeed * Time.deltaTime;
+        //1enタグが付いたオブジェクトをoneYen配列に格納
+        GameObject[] oneYens = GameObject.FindGameObjectsWithTag("1en");
+        //全てのoneYensの要素をYensとして検索
+        foreach (GameObject Yens in oneYens)
+        {
+            Yens.transform.position =
+                      Vector3.MoveTowards(Yens.transform.position, this.transform.position, step);
+
+            if (Yens.transform.position == this.transform.position)
+            {
+                m_audioSource.PlayOneShot(m_pickManeySound);
+                Destroy(Yens);
+            }
+        }
+    }
+
+    //プレイヤーがダメージを受けたときのメソッド
+    public void PlayerHitObject(Collider2D c)
     {
         // レイヤー名を取得
         string layerName = LayerMask.LayerToName(c.gameObject.layer);
@@ -72,65 +142,6 @@ public class NewPlayerSpaceShip : NewSpaceShip
             }
         }
     }
-
-    private void PlayerSpaceShipMove()
-    {
-        // 右・左
-        float x = Input.GetAxisRaw("Horizontal");
-
-        // 上・下
-        float y = Input.GetAxisRaw("Vertical");
-
-        // 移動する向きを求める
-        Vector2 direction = new Vector2(x, y).normalized;
-
-        // 移動する向きとスピードを代入する
-        m_rigidbody2d.velocity = direction * m_moveSpeed;
-
-        //プレイヤーの移動を制限
-        Clamp();
-    }
-
-    //プレイヤーの動きを制限するメソッド
-    private void Clamp()
-    {
-        // 画面左下のワールド座標をビューポートから取得
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-
-        // 画面右上のワールド座標をビューポートから取得
-        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-
-        // プレイヤーの座標を取得
-        Vector2 pos = transform.position;
-
-        // プレイヤーの位置が画面内に収まるように制限をかける
-        pos.x = Mathf.Clamp(pos.x, min.x, max.x);
-        pos.y = Mathf.Clamp(pos.y, min.y, max.y);
-
-        // 制限をかけた値をプレイヤーの位置とする
-        transform.position = pos;
-    }
-
-    private void getManey()
-    {
-        //回収するスピード
-        float step = m_pickManeySpeed * Time.deltaTime;
-        //1enタグが付いたオブジェクトをoneYen配列に格納
-        GameObject[] oneYens = GameObject.FindGameObjectsWithTag("1en");
-        //全てのoneYensの要素をYensとして検索
-        foreach (GameObject Yens in oneYens)
-        {
-            Yens.transform.position =
-                      Vector3.MoveTowards(Yens.transform.position, this.transform.position, step);
-
-            if (Yens.transform.position == this.transform.position)
-            {
-                m_audioSource.PlayOneShot(m_pickManeySound);
-                Destroy(Yens);
-            }
-        }
-    }
-
     public void Explosion()
     {
         Instantiate(m_ExplosionPrefub, transform.position, transform.rotation);

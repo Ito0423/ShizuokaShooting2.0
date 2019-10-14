@@ -7,13 +7,13 @@ public class PlayerShot : MonoBehaviour
 
     [SerializeField] public NewBullet[] m_playerBullet;
 
-    [SerializeField] static private int playerCanShotNum = 1;
+    [SerializeField] static private int m_playerCanShotNum = 1;
 
-    [System.NonSerialized] public bool[] m_playerShotFlag = new bool[playerCanShotNum];
+    [System.NonSerialized] public bool[] m_playerShotFlag = new bool[m_playerCanShotNum];
 
     void Start()
     {
-        for(int i=0; i< playerCanShotNum; i++)
+        for(int i=0; i< m_playerCanShotNum; i++)
         {
             m_playerShotFlag[i] = false;
         }        
@@ -23,7 +23,7 @@ public class PlayerShot : MonoBehaviour
     {
         //TODO 変える
         m_playerShotFlag[0] = true;
-        for (int i = 0; i < playerCanShotNum; i++)
+        for (int i = 0; i < m_playerCanShotNum; i++)
         {
             if (m_playerShotFlag[i] == true)
             {
