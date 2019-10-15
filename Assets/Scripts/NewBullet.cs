@@ -4,20 +4,35 @@ using UnityEngine;
 
 public class NewBullet : MonoBehaviour
 {
+    //コンポーネントクラス
+    private Rigidbody2D _rigidbody2d;
+    //クラス変数
 
-    //弾丸が消える時間
-    [SerializeField] int m_bulletTime = 5;
-    //弾丸が与えるダメージ
-    [SerializeField] int m_bulletPower = 1;
-    //弾丸のスピード
-    [SerializeField] float m_bulletSpeed =1.0f;
+    //定数
 
+    //インスペクターで追加するオブジェクト
 
-    public void SetBulletSpeed()
+    //インスペクターで設定する変数
+    [SerializeField] float _bulletSpeed = 1.0f;
+    [SerializeField] int _bulletPower = 5;
+    public int BulletPower
     {
-        //velositｙで弾を発射
-        GetComponent<Rigidbody2D>().velocity = transform.up.normalized * m_bulletSpeed;
-        //時間で破壊
-        Destroy(gameObject, m_bulletTime);
+        get { return _bulletPower; }
+        private set { _bulletPower = value; }
+    }
+
+
+    private void Awake()
+    {
+        _rigidbody2d = GetComponent<Rigidbody2D>();
+    }
+
+    public void BulletSpeedControlloer()
+    {
+        PlayerShot playerShot = FindObjectOfType<PlayerShot>();
+
+        _rigidbody2d.velocity = transform.up.normalized * _bulletSpeed;
+
+        Destroy(gameObject, playerShot.BulletTime);
     }
 }

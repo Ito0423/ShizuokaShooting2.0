@@ -6,47 +6,27 @@ using System.ComponentModel;
 [RequireComponent(typeof(Rigidbody2D))]
 public class NewSpaceShip : MonoBehaviour
 {
-    // 機体が移動するスピード
-    public float m_moveSpeed = 1.0f;
+    //コンポーネントクラス
+    [System.NonSerialized] public Rigidbody2D _rigidbody2d;
 
-    //機体が打つ弾のスピード
-    public float m_shotBulletSpeed = 0.1f;
+    //クラス変数
 
-    //弾を打つかどうか
-    public bool m_CanShot = true;
+    //定数
 
-    //爆発のprefab
-    public GameObject m_ExplosionPrefub;
+    //インスペクターで追加するオブジェクト
+    [SerializeField] GameObject _ExplosionPrefub;
 
-    //弾の攻撃力
-    public int m_BulletPower = 5;
+    //インスペクターで設定する変数
+    public float _moveSpeed = 1.0f;
 
-    //リキッドボディコンポーネント 
-    [System.NonSerialized] public Rigidbody2D m_rigidbody2d;
-
-    //オーディオソースコンポーネント
-    [System.NonSerialized] public AudioSource m_audioSource;
-
-    //アニメーターコンポーネント
-    [System.NonSerialized] public Animator m_animator;
-
-    //弾を打った時の音
-    public AudioClip m_ShotBulletSound;
-
-    //弾を受けた時の音
-    public AudioClip m_getDamageSound;
-
-    //機体に必要なコンポーネントを獲得
-    public void GetConponent()
+    public void GetBasicSpaceShipComponent()
     {
-        //オーディオコンポーネントを取得して格納
-        m_audioSource = GetComponent<AudioSource>();
-
-        //アニメーターコンポーネントを取得して格納
-        m_animator = GetComponent<Animator>();
-
-        //rigidbody2dコンポーネントを取得して格納
-        m_rigidbody2d = GetComponent<Rigidbody2D>();
+        _rigidbody2d = GetComponent<Rigidbody2D>();
+    }
+    public void Explosion()
+    {
+        Instantiate(_ExplosionPrefub, transform.position, transform.rotation);
     }
 }
+
 

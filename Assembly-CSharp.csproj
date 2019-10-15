@@ -70,6 +70,9 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
+    <Compile Include="Assets\Scripts\_Enemy.cs" />
+    <Compile Include="Assets\Scripts\_player\NewPlayerShip.cs" />
+    <Compile Include="Assets\Scripts\_player\PlayerShot.cs" />
     <Compile Include="Assets\Scripts\Effect\Explosion.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss.cs" />
     <Compile Include="Assets\Scripts\Enemy\Emitter.cs" />
@@ -85,11 +88,9 @@
     <Compile Include="Assets\Scripts\Field\StageText.cs" />
     <Compile Include="Assets\Scripts\Field\Title.cs" />
     <Compile Include="Assets\Scripts\NewBullet.cs" />
-    <Compile Include="Assets\Scripts\NewPlayerSpaceShip.cs" />
     <Compile Include="Assets\Scripts\NewSpaceShip.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHp.cs" />
-    <Compile Include="Assets\Scripts\PlayerShot.cs" />
     <Compile Include="Assets\Scripts\Public\Blink.cs" />
     <Compile Include="Assets\Scripts\Public\Bullet.cs" />
     <Compile Include="Assets\Scripts\Public\Manager.cs" />
