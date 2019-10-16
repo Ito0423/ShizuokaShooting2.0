@@ -5,7 +5,7 @@ using UnityEngine;
 //プレイヤーの弾を打つ挙動を管理するクラス
 public class PlayerShot : MonoBehaviour
 {
-    //コンポーネントクラス
+    //コンポーネント
 
     //クラス変数
 

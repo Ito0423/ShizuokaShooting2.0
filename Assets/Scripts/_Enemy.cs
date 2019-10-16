@@ -2,11 +2,10 @@
 using System.Collections;
 using DG.Tweening;
 
-public class _Enemy : NewSpaceShip
+public class _Enemy : _SpaceShip
 {
     //コンポーネントクラス
     private Animator _animator;
-    //クラス変数
 
     //定数
     readonly string BULLET_PLAYER_LAYER_NAME = "Bullet(Player)";
@@ -39,6 +38,10 @@ public class _Enemy : NewSpaceShip
         // ヒットポイントを減らす
         enemyHp -= newBullet.BulletPower;
 
+        //被弾アニメーションを流す
+        _animator = GetComponent<Animator>();
+        _animator.SetTrigger(DAMAGE_ANIMATION_NAME);
+
         // 弾の削除
         Destroy(c.gameObject);
 
@@ -46,11 +49,6 @@ public class _Enemy : NewSpaceShip
         if (enemyHp <= 0)
         {
             DestroyEnemyProcess();
-        }
-        else
-        {
-            _animator = GetComponent<Animator>();
-            _animator.SetTrigger(DAMAGE_ANIMATION_NAME);
         }
     }
     private void DestroyEnemyProcess()

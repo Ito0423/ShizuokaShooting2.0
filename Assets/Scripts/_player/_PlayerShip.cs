@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //プレイヤーの挙動を管理するクラス
-public class NewPlayerShip : NewSpaceShip
+public class _PlayerShip : _SpaceShip
 {
-    //コンポーネントクラス
+    //コンポーネント
     private AudioSource _audioSource;
     private Animator _animator;
-
-    //クラス変数
-    private PlayerShot _playerShot;
 
     //定数
     readonly string YEN_TAG = "1en";
@@ -24,15 +21,12 @@ public class NewPlayerShip : NewSpaceShip
     [SerializeField] AudioClip _getDamageSound;
 
     //インスペクターで設定する変数
-    [SerializeField] float _pickManeySpeed;
-    [SerializeField] float _delayShotSpeed = 0.5f;
+    [SerializeField] float _pickManeySpeed = 5;
 
-    IEnumerator Start()
+    //TODO
+    /*IEnumerator Start()
     {
         GetBasicSpaceShipComponent();
-        _playerShot = GetComponent<PlayerShot>();
-        _audioSource = GetComponent<AudioSource>();
-        _animator = GetComponent<Animator>();
 
         while (true)
         {
@@ -46,7 +40,7 @@ public class NewPlayerShip : NewSpaceShip
     {
         MovePlayer();
         GetManey();
-    }
+    }*/
 
     //プレイヤーがオブジェクトに当たった時の挙動
     private void OnTriggerEnter2D(Collider2D c)
@@ -54,7 +48,8 @@ public class NewPlayerShip : NewSpaceShip
         HitPlayerToObject(c);
     }
 
-    private void MovePlayer()
+    //TODO
+    /*private void MovePlayer()
     {
         // 右・左
         float x = Input.GetAxisRaw("Horizontal");
@@ -70,10 +65,10 @@ public class NewPlayerShip : NewSpaceShip
 
         //プレイヤーの移動を制限
         ClampPlayerMove();
-    }
+    }*/
 
     //プレイヤーの動きを制限するメソッド
-    private void ClampPlayerMove()
+    public void ClampPlayerMove()
     {
         // 画面左下のワールド座標をビューポートから取得
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
@@ -93,7 +88,7 @@ public class NewPlayerShip : NewSpaceShip
     }
 
     //プレイヤーが金を回収するメソッド
-    private void GetManey()
+    public void GetManey()
     {
 
         //回収するスピード
@@ -103,15 +98,15 @@ public class NewPlayerShip : NewSpaceShip
         GameObject[] oneYens = GameObject.FindGameObjectsWithTag(YEN_TAG);
 
         //全てのoneYensの要素をYensとして検索
-        foreach (GameObject Yens in oneYens)
+        foreach (GameObject oneYen in oneYens)
         {
-            Yens.transform.position =
-                      Vector3.MoveTowards(Yens.transform.position, this.transform.position, pickManeySpeed);
+            oneYen.transform.position =
+                      Vector3.MoveTowards(oneYen.transform.position, this.transform.position, pickManeySpeed);
 
-            if (Yens.transform.position == this.transform.position)
+            if (oneYen.transform.position == this.transform.position)
             {
                 _audioSource.PlayOneShot(_pickManeySound);
-                Destroy(Yens);
+                Destroy(oneYen);
             }
         }
     }
@@ -157,6 +152,11 @@ public class NewPlayerShip : NewSpaceShip
             // プレイヤーを削除
             Destroy(gameObject);
         }
+    }
+    public void GetPlayerComponent()
+    {
+        _audioSource = GetComponent<AudioSource>();
+        _animator = GetComponent<Animator>();
     }
 }
 

@@ -4,14 +4,10 @@ using UnityEngine;
 using System.ComponentModel;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class NewSpaceShip : MonoBehaviour
+public class _SpaceShip : MonoBehaviour
 {
-    //コンポーネントクラス
+    //コンポーネント
     [System.NonSerialized] public Rigidbody2D _rigidbody2d;
-
-    //クラス変数
-
-    //定数
 
     //インスペクターで追加するオブジェクト
     [SerializeField] GameObject _ExplosionPrefub;

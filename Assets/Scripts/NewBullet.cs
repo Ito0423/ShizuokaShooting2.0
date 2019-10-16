@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NewBullet : MonoBehaviour
 {
-    //コンポーネントクラス
+    //コンポーネント
     private Rigidbody2D _rigidbody2d;
     //クラス変数
 
