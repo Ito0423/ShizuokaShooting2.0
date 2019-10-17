@@ -20,7 +20,7 @@ public class EnemyKago : _Enemy
 
                 Transform shotPosition = transform.GetChild(i);
 
-                ShotEnemy(shotPosition);
+                //ShotEnemy(shotPosition);
             }
 
             // shotDelay秒待つ
@@ -31,7 +31,7 @@ public class EnemyKago : _Enemy
     {
         GetComponent<Rigidbody2D>().velocity = direction * _moveSpeed;
     }
-    public void ShotEnemy(Transform origin)
+    /*public void ShotEnemy(Transform origin)
     {
         var pos = origin.position;
 
@@ -39,5 +39,5 @@ public class EnemyKago : _Enemy
 
         var shot = Instantiate(m_bullet[0], pos, rot);
         shot.SetBulletSpeed(m_bulletSpeed);
-    }
+    }*/
 }

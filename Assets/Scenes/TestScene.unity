@@ -318,7 +318,7 @@ PrefabInstance:
     - target: {fileID: 3125129962921464909, guid: 5b70bde32a154e544bb63434aae65aa7,
         type: 3}
       propertyPath: _bulletTime
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3125129962921464909, guid: 5b70bde32a154e544bb63434aae65aa7,
         type: 3}
@@ -329,7 +329,7 @@ PrefabInstance:
     - target: {fileID: 3125129962921464909, guid: 5b70bde32a154e544bb63434aae65aa7,
         type: 3}
       propertyPath: _playerBulletCount
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5697923879385680361, guid: 5b70bde32a154e544bb63434aae65aa7, type: 3}
