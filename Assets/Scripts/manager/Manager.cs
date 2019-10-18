@@ -6,23 +6,40 @@ using System.Collections;
 
 public class Manager : MonoBehaviour
 {
+    //コンポーネント
+    private GameObject waveText;
+    //オブジェクト
+    private GameObject gameStartText;
+    private GameObject gameEndText;
+    //クラス変数
+
+    //定数
+    readonly string STAGE_START_TEXT = "Wave";
+    readonly string GAME_END_TEXT = "GameClear";
+    //インスペクターで追加するオブジェクト
+    [SerializeField] GameObject _playerObject;
+    //インスペクターで設定する変数
+
     // Playerプレハブ
     public GameObject player;
-
     // タイトル
     private GameObject title;
     //ステージ数のテキスト
     private GameObject waveText;
     //ステージクリア時のテキスト
-    private GameObject gameClearText;
+    
 
     void Start()
     {
         // Titleゲームオブジェクトを検索し取得する
-        waveText = GameObject.Find("Wave");
-        gameClearText = GameObject.Find("GameClear");
+        gameStartText = GameObject.Find(STAGE_START_TEXT);
+        gameEndText = GameObject.Find(GAME_END_TEXT);
+        //Textのアクティブを変化させる
+        ChangeActiveObject(gameStartText, true);
+        ChangeActiveObject(gameEndText, false);
+
         waveText.SetActive(false);
-        gameClearText.SetActive(false);
+        gameEndText.SetActive(false);
         GameStart();
     }
 
@@ -34,12 +51,14 @@ public class Manager : MonoBehaviour
         }
     }
 
-    void GameStart()
+    public void StageStart()
     {
-        // ゲームスタート時に、タイトルを非表示にしてプレイヤーを作成する
-        //title.SetActive(false);
-        StartCoroutine("ChangeColor");
-        Instantiate(player, player.transform.position, player.transform.rotation);
+        Instantiate(_playerObject, _playerObject.transform.position, _playerObject.transform.rotation);
+    }
+
+    public void ChangeActiveObject(GameObject switchText, bool SwitchOnDisplay)
+    {
+        switchText.SetActive(SwitchOnDisplay);
     }
 
     public void GameOver()
@@ -88,7 +107,7 @@ public class Manager : MonoBehaviour
         {
             Destroy(bullets);
         }
-        gameClearText.SetActive(true);
+        gameEndText.SetActive(true);
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene("Training");
     }

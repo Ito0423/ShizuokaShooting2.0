@@ -53,7 +53,7 @@ public class _Enemy : _SpaceShip
     }
     private void DestroyEnemyProcess()
     {
-        FindObjectOfType<Score>().AddPoint(dropManeyPoint);
+       //TODO FindObjectOfType<Score>().AddPoint(dropManeyPoint);
 
         //爆発
         Explosion();
