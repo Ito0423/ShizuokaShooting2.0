@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 //プレイヤーの挙動を管理するクラス
 public class _PlayerShip : _SpaceShip
