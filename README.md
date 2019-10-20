@@ -1,5 +1,5 @@
-Name
+Name:
 ShizuokaShooting(仮)
 
-Overview
+Overview:
 Unity(C#)で制作したシューティングゲームアプリ
