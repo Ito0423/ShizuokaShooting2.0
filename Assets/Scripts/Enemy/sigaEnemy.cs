@@ -23,12 +23,12 @@ public class sigaEnemy : Enemy
         spaceship.Move(transform.right * +1);
 
         //ステージ数に応じて強化する
-        if ((Emitter.stageCount - 1) / 3 >= 1)
+        /*if ((Emitter.stageCount - 1) / 3 >= 1)
         {
             hp += (hp * ((Emitter.stageCount - 1) / 3));
             maneyPoint += (maneyPoint * ((Emitter.stageCount - 1) / 3));
             spaceship.m_shotDelay -= spaceship.m_shotDelay / 5;
-        }
+        }*/
         //弾を打てるかチェックする
         if (spaceship.m_canShot == false)
         {

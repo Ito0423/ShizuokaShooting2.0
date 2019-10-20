@@ -56,7 +56,7 @@ public class Manager : MonoBehaviour
        
         Text stageText = _stageNumberText.GetComponent<Text>();
         //TODO ステージテキストに現在のステージ数の文字列を追加する
-        stageText.text = "STAGE" + Emitter.stageCount;
+        stageText.text = "STAGE";
         ChangeActiveObject(_stageEndText, false);
         Instantiate(_playerObject, _playerObject.transform.position, _playerObject.transform.rotation);
         yield return new WaitForSeconds(STAGE_NUMBER_TEXT_DISPLAY_TIME);

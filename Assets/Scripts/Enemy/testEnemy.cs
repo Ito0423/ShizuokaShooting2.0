@@ -31,12 +31,12 @@ public class testEnemy : Enemy
 
         spaceship = GetComponent<Spaceship>();
         //ステージ数に応じて敵を強化
-        if ((Emitter.stageCount - 1) / 3 >= 1)
+        /*if ((Emitter.stageCount - 1) / 3 >= 1)
         {
             hp += (hp * ((Emitter.stageCount - 1) / 3));
             maneyPoint += (maneyPoint * ((Emitter.stageCount - 1) / 3));
             spaceship.m_shotDelay -= spaceship.m_shotDelay / 5;
-        }
+        }*/
 
         // ローカル座標のY軸のマイナス方向に移動する
         spaceship.Move(transform.right * +1.0f);

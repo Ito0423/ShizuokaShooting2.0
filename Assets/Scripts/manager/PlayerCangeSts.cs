@@ -20,11 +20,11 @@ public class PlayerCangeSts : MonoBehaviour
         TrainingButtonShizuoka.canShotShizuButton2 = false;
         TrainingButtonShizuoka.canShotShizuButton = true;
 
-        Emitter.stageCount = 1;
+        // Emitter.stageCount = 1;
         PlayerHp.playerHp = 5;
         Score.maney = 0;
         TrainingEndButton.stageCount = 1;
 
 
-}
+    }
 }

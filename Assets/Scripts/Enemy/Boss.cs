@@ -39,12 +39,12 @@ public class Boss : Enemy
         this.transform.DOMove(endValue: new Vector3(this.transform.position.x+5, -3, 0), duration: 2.0f);
 
         //ステージ数に応じて強化
-        if ((Emitter.stageCount - 1) / 3 >= 1)
+        /*if ((Emitter.stageCount - 1) / 3 >= 1)
         {
             hp += (hp * ((Emitter.stageCount - 1) / 3));
             maneyPoint += (maneyPoint * ((Emitter.stageCount - 1) / 3));
             spaceship.m_shotDelay -= spaceship.m_shotDelay / 5;
-        }
+        }*/
         //玉を打たない敵の場合終了
         if (spaceship.m_canShot == false)
         {

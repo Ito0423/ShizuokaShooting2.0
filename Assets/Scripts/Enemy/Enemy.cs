@@ -24,12 +24,12 @@ public class Enemy : MonoBehaviour
         spaceship.Move(transform.right * +1);//TODO 
 
         //現在のステージ数に応じてHPと落とす金と発射速度を増加させる
-        if ((Emitter.stageCount - 1) / 3 >= 1)
+        /*if ((Emitter.stageCount - 1) / 3 >= 1)
         {
             hp += (hp * ((Emitter.stageCount - 1) / 3));
             maneyPoint += (maneyPoint * ((Emitter.stageCount - 1) / 3));
             spaceship.m_shotDelay -= spaceship.m_shotDelay/5;
-        }
+        }*/
         //弾を打たない場合終了
         if (spaceship.m_canShot == false)
         {

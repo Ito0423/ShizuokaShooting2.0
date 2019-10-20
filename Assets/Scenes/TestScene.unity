@@ -326,7 +326,7 @@ MonoBehaviour:
   _ShotBulletSound: {fileID: 0}
   _getDamageSound: {fileID: 0}
   _pickManeySpeed: 10
-  _delayShotSpeed: 10
+  _delayShotSpeed: 0.5
 --- !u!1001 &1313337011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -636,5 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a019317d8266f594b93ce491aad57711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
+  _waves:
   - {fileID: 6007183904089072433, guid: f2c0a762b8d86a945b948f2d4660e214, type: 3}
+  - {fileID: 6007183904089072433, guid: 521715cdd673f6149b13d4e5188cdbad, type: 3}
+  - {fileID: 6007183904089072433, guid: 521715cdd673f6149b13d4e5188cdbad, type: 3}

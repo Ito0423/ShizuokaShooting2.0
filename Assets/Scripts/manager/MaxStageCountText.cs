@@ -16,7 +16,7 @@ public class MaxStageCountText : MonoBehaviour
         //テキストオブジェクトに変数化
         Text score_text = maxStageCount.GetComponent<Text>();
         //スコアテキストに最終ステージを表示
-        score_text.text = "FINISH STAGE" + Emitter.stageCount;
+        // score_text.text = "FINISH STAGE" + Emitter.stageCount;
         //スタティック変数を初期化
         FindObjectOfType<PlayerCangeSts>().ResetSts();
     }
