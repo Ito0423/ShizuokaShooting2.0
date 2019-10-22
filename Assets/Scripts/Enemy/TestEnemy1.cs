@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class testEnemy : Enemy
+public class TestEnemy : Enemy
 {
     [SerializeField]
     RectTransform rectTran;

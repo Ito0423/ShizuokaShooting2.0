@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections;
 
 //プレイヤーの挙動を管理するクラス
 public class _PlayerShip : _SpaceShip
@@ -22,7 +25,7 @@ public class _PlayerShip : _SpaceShip
     [SerializeField] float _pickManeySpeed = 5;
 
     //TODO
-    /*IEnumerator Start()
+   /* IEnumerator Start()
     {
         GetBasicSpaceShipComponent();
 
@@ -32,9 +35,9 @@ public class _PlayerShip : _SpaceShip
             _playerShot.ShotPlayerBullet(transform);
             yield return new WaitForSeconds(_delayShotSpeed);
         }
-    }
+    }*/
 
-    private void Update()
+   /* private void Update()
     {
         MovePlayer();
         GetManey();
@@ -45,9 +48,7 @@ public class _PlayerShip : _SpaceShip
     {
         HitPlayerToObject(c);
     }
-
-    //TODO
-    /*private void MovePlayer()
+   /* private void MovePlayer()
     {
         // 右・左
         float x = Input.GetAxisRaw("Horizontal");
@@ -142,7 +143,7 @@ public class _PlayerShip : _SpaceShip
         if (PlayerHp.playerHp <= 0)
         {
             // Managerコンポーネントをシーン内から探して取得し、GameOverメソッドを呼び出す
-            FindObjectOfType<Manager>().GameOver();
+            FindObjectOfType<StageManager>().GameOver();
 
             // 爆発する
             Explosion();

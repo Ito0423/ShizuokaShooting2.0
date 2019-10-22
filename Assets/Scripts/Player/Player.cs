@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
             Debug.Log("GAMEOVER");
             // Managerコンポーネントをシーン内から探して取得し、GameOverメソッドを呼び出す
-            FindObjectOfType<Manager>().GameOver();
+            FindObjectOfType<StageManager>().GameOver();
 
             // 爆発する
             spaceship.Explosion();

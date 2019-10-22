@@ -3,39 +3,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
-public class Manager : MonoBehaviour
+public class StageManager : MonoBehaviour
 {
-    //コンポーネント
-    private GameObject _waveText;
+    PublicManager publicManager;
     //オブジェクト
     [SerializeField] GameObject _stageNumberText;
-    [SerializeField] GameObject _stageStartText;
     [SerializeField] GameObject _stageEndText;
-    [SerializeField] GameObject _playerShip;
+    [SerializeField] GameObject _playerObject;
     [SerializeField] GameObject _emitter;
-    //クラス変数
-
     //定数
-    readonly string STAGE_START_TEXT = "Wave";
-    readonly string STAGE_END_TEXT = "GameClear";
     readonly string YEN_TAG = "1en";
     readonly string BULLET_ENEMY_TAG = "Bullet";
     readonly float STAGE_NUMBER_TEXT_DISPLAY_TIME = 2.0f;
     readonly float STAGE_START_TEXT_DISPLAY_TIME = 2.0f;
-
-    //インスペクターで追加するオブジェクト
-    [SerializeField] GameObject _playerObject;
-    //インスペクターで設定する変数
-
-    static private int _stageNumber;
- 
-
- 
-    void Start()
-    {
-
-    }
 
     void Update()
     {
@@ -43,6 +25,7 @@ public class Manager : MonoBehaviour
         {
             SceneManager.LoadScene("Training");
         }
+        //エミッターが消滅したらステージクリアにする
         checkEmitterExist();
     }
 
@@ -51,22 +34,21 @@ public class Manager : MonoBehaviour
     }
 
     //TODO 繰り返しが多い
-    IEnumerator StartStageCoroutine()
+    IEnumerator Start()
     {
-       
+        publicManager = GetComponent<PublicManager>();
         Text stageText = _stageNumberText.GetComponent<Text>();
         //TODO ステージテキストに現在のステージ数の文字列を追加する
-        stageText.text = "STAGE";
+        stageText.text = "STAGE" + publicManager.StageCount;
         ChangeActiveObject(_stageEndText, false);
         Instantiate(_playerObject, _playerObject.transform.position, _playerObject.transform.rotation);
         yield return new WaitForSeconds(STAGE_NUMBER_TEXT_DISPLAY_TIME);
-        ChangeActiveObject(_stageNumberText, false);
-        ChangeActiveObject(_stageStartText, true);
+        stageText.text = "START!!";
         yield return new WaitForSeconds(STAGE_START_TEXT_DISPLAY_TIME);
-        ChangeActiveObject(_stageStartText, false);
+        ChangeActiveObject(_stageNumberText, false);
     }
 
-    IEnumerator ClearStargeCoroutine()
+    public IEnumerator ClearStargeCoroutine()
     {
         GameObject[] bullet = GameObject.FindGameObjectsWithTag(BULLET_ENEMY_TAG);
         foreach (GameObject bullets in bullet)
@@ -74,6 +56,7 @@ public class Manager : MonoBehaviour
             Destroy(bullets);
         }
         ChangeActiveObject(_stageEndText, true);
+        publicManager.StageCount += 1;
         yield return new WaitForSeconds(STAGE_START_TEXT_DISPLAY_TIME);
         SceneManager.LoadScene("Training");
     }
@@ -94,23 +77,11 @@ public class Manager : MonoBehaviour
         switchText.SetActive(SwitchOnDisplay);
     }
 
-    private void checkEmitterExist()
+    public void checkEmitterExist()
     {
         if (!_emitter)
         {
             StartCoroutine(ClearStargeCoroutine());
         }
     }
-
-
-    //古いコード↓
-
-
-    public bool IsPlaying()
-    {
-        // ゲーム中かどうかはタイトルの表示/非表示で判断する
-        // return title.activeSelf == false;
-        return true;
-    }
 }
-

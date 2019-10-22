@@ -19,6 +19,8 @@ public class PlayerShot : MonoBehaviour
     //インスペクターで設定する変数
     [SerializeField] NewBullet[] _playerBullets;
     [SerializeField] int _playerBulletCount = 1;
+
+
     [SerializeField] float _bulletTime = 1.0f;
     public float BulletTime
     {

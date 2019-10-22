@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4657778860048734517}
   - component: {fileID: 4657778860048734522}
   m_Layer: 0
-  m_Name: Emitter
+  m_Name: Emitter1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,8 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a019317d8266f594b93ce491aad57711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_roopCountEmitter: 1
-  waves:
-  - {fileID: 5230463377192521663, guid: b31e0676bf69b354ea2017b8aa1e5259, type: 3}
-  - {fileID: 2929141865657547974, guid: 968c699e905c59040a05307c4f9629ef, type: 3}
-  - {fileID: 6719310413848956393, guid: 50c9c72faa656b043a2ea61d70c6c4ae, type: 3}
+  _waves:
+  - {fileID: 6007183904089072433, guid: f2c0a762b8d86a945b948f2d4660e214, type: 3}
+  - {fileID: 6007183904089072433, guid: 521715cdd673f6149b13d4e5188cdbad, type: 3}
+  stageCount: 0

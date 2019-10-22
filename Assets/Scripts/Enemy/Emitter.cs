@@ -12,8 +12,6 @@ public class Emitter : MonoBehaviour
     //インスペクターで追加するオブジェクト
     public GameObject[] _waves;
 
-    public int stageCount;
-
     IEnumerator Start()
     {
         int _currentWave = 0;
@@ -26,11 +24,22 @@ public class Emitter : MonoBehaviour
             GameObject wave = Instantiate(_waves[_currentWave],
                 _waves[_currentWave].transform.position, _waves[_currentWave].transform.rotation);
 
-            //画面のエネミーがすべて倒されるまで待つ
-            while (wave)
+            GameObject[] enemyTags = GameObject.FindGameObjectsWithTag(ENEMY_TAG);
+
+            foreach (GameObject enemyTag in enemyTags)
             {
-                yield return new WaitForEndOfFrame();
+                while (enemyTag)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+
+                Destroy(this.gameObject);
             }
+
+            //画面のエネミーがすべて倒されるまで待つ
+
+            Debug.Log(_currentWave);
+            Debug.Log(_waves.Length);
             //格納されたwa
             if (_currentWave == _waves.Length - 1)
             {

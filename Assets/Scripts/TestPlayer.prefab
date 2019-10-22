@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 338066801532965376}
   - component: {fileID: 7992135238024202511}
   - component: {fileID: 7992135239534821731}
-  - component: {fileID: 5697923879385680361}
   - component: {fileID: 3125129962921464909}
+  - component: {fileID: -6536767234364576230}
   m_Layer: 8
   m_Name: TestPlayer
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 5371339410396510660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6, y: 0, z: 0}
-  m_LocalScale: {x: 0.804848, y: 0.91120005, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -216,9 +216,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05484859}
+  m_Offset: {x: 0, y: -0.12141028}
   serializedVersion: 2
-  m_Radius: 0.36867934
+  m_Radius: 0.30211765
 --- !u!95 &7992135239534821731
 Animator:
   serializedVersion: 3
@@ -238,26 +238,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5697923879385680361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5371339410396510660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3324b8861d9c9438751c54c426f398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 1
-  _CanShot: 1
-  _ExplosionPrefub: {fileID: 0}
-  _ShotBulletSound: {fileID: 0}
-  _getDamageSound: {fileID: 0}
-  _pickManeySound: {fileID: 0}
-  _pickManeySpeed: 0
-  _delayShotSpeed: 0.5
 --- !u!114 &3125129962921464909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,5 +252,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerBullets:
   - {fileID: 3597725301378420608, guid: ecb3afc71c2415141b1ffac0ce81a139, type: 3}
-  _playerBulletCount: 1
+  - {fileID: 3597725301378420608, guid: ecb3afc71c2415141b1ffac0ce81a139, type: 3}
+  _playerBulletCount: 2
   _bulletTime: 1
+--- !u!114 &-6536767234364576230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371339410396510660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095f58eae61c89f48aa5bdeb886f8e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ExplosionPrefub: {fileID: 0}
+  _moveSpeed: 7
+  _pickManeySound: {fileID: 0}
+  _ShotBulletSound: {fileID: 0}
+  _getDamageSound: {fileID: 0}
+  _pickManeySpeed: 5
+  _delayShotSpeed: 0.5
